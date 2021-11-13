@@ -23,7 +23,7 @@ public class PlayerRestController {
                 "Mustermann"));
     }
 
-    @GetMapping(path = "/players" )
+    @GetMapping(path = "/api/v1/players" )
     public ResponseEntity<List<Player>> fetchPlayers() {
         return ResponseEntity.ok(players);
     }
