@@ -1,4 +1,4 @@
-package de.htwberlin.webtech.owOrganizer.persistance;
+package de.htwberlin.webtech.owOrganizer.persistence;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -8,7 +8,7 @@ public class PlayerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Integer id;
 
     @Column(name= "player_name")
@@ -31,12 +31,16 @@ public class PlayerEntity {
     private LocalDate birthday;
 
     @Column(name= "is_student")
-    private boolean studentStatus;
+    private Boolean studentStatus;
 
     @Column(name= "is_competitive")
-    private boolean compStatus;
+    private Boolean compStatus;
 
-    public PlayerEntity(String playerName, String bnetId, String discordTag, String gender, String firstName, String lastName, LocalDate birthday, boolean studentStatus, boolean compStatus) {
+    //drop test column
+
+    public PlayerEntity(String playerName, String bnetId, String discordTag,
+                        String gender, String firstName, String lastName,
+                        LocalDate birthday, Boolean studentStatus, Boolean compStatus) {
         this.playerName = playerName;
         this.bnetId = bnetId;
         this.discordTag = discordTag;
@@ -115,7 +119,7 @@ public class PlayerEntity {
         return studentStatus;
     }
 
-    public void setStudentStatus(boolean studentStatus) {
+    public void setStudentStatus(Boolean studentStatus) {
         this.studentStatus = studentStatus;
     }
 
@@ -123,7 +127,7 @@ public class PlayerEntity {
         return compStatus;
     }
 
-    public void setCompStatus(boolean compStatus) {
+    public void setCompStatus(Boolean compStatus) {
         this.compStatus = compStatus;
     }
 }

@@ -3,15 +3,16 @@ package de.htwberlin.webtech.owOrganizer.web.api;
 import java.sql.Date;
 
 public class Player {
-    private int id;
-    private String playerName;
-    private String bnetId;
-    private String discordTag;
-    private String gender;
-    private String firstName;
-    private String lastName;
+    protected Integer id;
+    protected String playerName;
+    protected String bnetId;
+    protected String discordTag;
+    protected String gender;
+    protected String firstName;
+    protected String lastName;
 
-    public Player(int id, String playerName, String bnetId, String discordTag, String gender, String firstName, String lastName) {
+
+    public Player(Integer id, String playerName, String bnetId, String discordTag, String gender, String firstName, String lastName) {
         this.id = id;
         this.playerName = playerName;
         this.bnetId = bnetId;
@@ -21,11 +22,11 @@ public class Player {
         this.lastName = lastName;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
