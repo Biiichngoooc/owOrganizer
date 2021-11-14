@@ -1,46 +1,23 @@
-package de.htwberlin.webtech.owOrganizer.persistence;
+package de.htwberlin.webtech.owOrganizer.web.api;
 
-import javax.persistence.*;
 import java.time.LocalDate;
 
-@Entity(name = "player")
-public class PlayerEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
-
-    @Column(name= "player_name")
+public class PlayerManipulationRequest {
     private String playerName;
-
-    @Column(name= "bnet_id")
     private String bnetId;
-
-    @Column(name= "discord_tag")
     private String discordTag;
-
     private String gender;
-
-    @Column(name= "first_name")
     private String firstName;
-
-    @Column(name= "last_name")
     private String lastName;
-
     private LocalDate birthday;
+    private Boolean isStudent;
+    private Boolean isCompetitive;
 
-    @Column(name= "is_student")
-    private Boolean student;
-
-    @Column(name= "is_competitive")
-    private Boolean competitive;
-
-    //drop test column
-
-    public PlayerEntity(String playerName, String bnetId, String discordTag,
-                        String gender, String firstName, String lastName,
-                        LocalDate birthday, Boolean student, Boolean competitive) {
+    public PlayerManipulationRequest(String playerName, String bnetId,
+                                     String discordTag, String gender,
+                                     String firstName, String lastName,
+                                     LocalDate birthday, Boolean isStudent,
+                                     Boolean isCompetitive) {
         this.playerName = playerName;
         this.bnetId = bnetId;
         this.discordTag = discordTag;
@@ -48,15 +25,8 @@ public class PlayerEntity {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;
-        this.student = student;
-        this.competitive = competitive;
-    }
-
-    protected PlayerEntity() {
-    }
-
-    public Integer getId() {
-        return id;
+        this.isStudent = isStudent;
+        this.isCompetitive = isCompetitive;
     }
 
     public String getPlayerName() {
@@ -115,19 +85,19 @@ public class PlayerEntity {
         this.birthday = birthday;
     }
 
-    public boolean isStudent() {
-        return student;
+    public Boolean getStudent() {
+        return isStudent;
     }
 
-    public void setStudent(Boolean studentStatus) {
-        this.student = studentStatus;
+    public void setStudent(Boolean student) {
+        isStudent = student;
     }
 
-    public boolean isCompetitive() {
-        return competitive;
+    public Boolean getCompetitive() {
+        return isCompetitive;
     }
 
-    public void setCompetitive(Boolean compStatus) {
-        this.competitive = compStatus;
+    public void setCompetitive(Boolean competitive) {
+        isCompetitive = competitive;
     }
 }
