@@ -1,7 +1,7 @@
 package de.htwberlin.webtech.owOrganizer.persistence;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.sql.Date;
 
 @Entity(name = "player")
 public class PlayerEntity {
@@ -10,37 +10,31 @@ public class PlayerEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-
     @Column(name= "player_name")
     private String playerName;
-
     @Column(name= "bnet_id")
     private String bnetId;
-
     @Column(name= "discord_tag")
     private String discordTag;
-
     private String gender;
-
     @Column(name= "first_name")
     private String firstName;
-
     @Column(name= "last_name")
     private String lastName;
-
-    private LocalDate birthday;
-
+    private Date birthday;
     @Column(name= "is_student")
     private Boolean student;
-
     @Column(name= "is_competitive")
     private Boolean competitive;
+    @ManyToOne
+    @JoinColumn(name = "team_id")
+    private UniligaTeamEntity uniligaTeamEntity;
 
-    //drop test column
+
 
     public PlayerEntity(String playerName, String bnetId, String discordTag,
                         String gender, String firstName, String lastName,
-                        LocalDate birthday, Boolean student, Boolean competitive) {
+                        Date birthday, Boolean student, Boolean competitive) {
         this.playerName = playerName;
         this.bnetId = bnetId;
         this.discordTag = discordTag;
@@ -107,11 +101,11 @@ public class PlayerEntity {
         this.lastName = lastName;
     }
 
-    public LocalDate getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDate birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

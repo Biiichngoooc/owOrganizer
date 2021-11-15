@@ -1,6 +1,6 @@
 package de.htwberlin.webtech.owOrganizer.web.api;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 public class Player {
     protected Integer id;
@@ -10,13 +10,13 @@ public class Player {
     protected String gender;
     protected String firstName;
     protected String lastName;
-    protected LocalDate birthday;
+    protected Date birthday;
     protected Boolean isStudent;
     protected Boolean isCompetitive;
 
 
     public Player(Integer id, String playerName, String bnetId, String discordTag,
-                  String gender, String firstName, String lastName, LocalDate birthday,
+                  String gender, String firstName, String lastName, Date birthday,
                   Boolean isStudent, Boolean isCompetitive) {
         this.id = id;
         this.playerName = playerName;
@@ -87,11 +87,11 @@ public class Player {
         this.lastName = lastName;
     }
 
-    public LocalDate getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDate birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

@@ -1,0 +1,7 @@
+Entity anlegen (construct ohne id)
+(Interface Repository anlegen) ?
+api java class anlegen
+Rest Controller anlegen (kann mit Repository kommunizieren/ Funktionen nutzen)
+Service anlegen (erstellt neue Objekte)
+
+IRepository -> Service -> RestController

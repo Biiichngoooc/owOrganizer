@@ -31,7 +31,7 @@ public class PlayerService {
                 playerEntity.getBirthday(),
                 playerEntity.isStudent(),
                 playerEntity.isCompetitive()
-                )).collect(Collectors.toList());
+        )).collect(Collectors.toList());
     }
     public Player findById(Integer id){
         var playerEntity = playerRepository.findById(id);
@@ -90,4 +90,12 @@ public class PlayerService {
    }
 
 
+    public boolean deleteById(Integer id) {
+        if (!playerRepository.existsById(id)){
+            return false;
+        }
+
+        playerRepository.deleteById(id);
+        return true;
+    }
 }
