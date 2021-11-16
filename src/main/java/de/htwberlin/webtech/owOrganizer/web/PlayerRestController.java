@@ -12,11 +12,7 @@ import java.util.List;
 
 @RestController
 public class PlayerRestController {
-
-
-
     private final PlayerService playerService;
-
 
     public PlayerRestController(PlayerService playerService) {
         this.playerService = playerService;
@@ -24,7 +20,6 @@ public class PlayerRestController {
 
     @GetMapping(path = "/api/v1/players" )
     public ResponseEntity<List<Player>> fetchPlayers() {
-
         return ResponseEntity.ok(playerService.findAll());
     }
 

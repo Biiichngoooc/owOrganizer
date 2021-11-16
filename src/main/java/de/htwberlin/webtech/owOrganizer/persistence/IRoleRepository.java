@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface IUniligaTeamRepository extends JpaRepository<UniligaTeamEntity, Integer> {
-    List<UniligaTeamEntity> findAllByUni(String uni);
+public interface IRoleRepository extends JpaRepository<RoleEntity, Integer> {
+    List<RoleEntity> findAllByRole(String role);
 }

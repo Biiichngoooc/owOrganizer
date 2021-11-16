@@ -1,42 +1,24 @@
-package de.htwberlin.webtech.owOrganizer.persistence;
+package de.htwberlin.webtech.owOrganizer.web.api;
 
-import javax.persistence.*;
-import java.net.Inet4Address;
-
-@Entity(name = "role")
-public class RoleEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "role_id")
-    private Integer roleId;
-
+public class RoleManipulationRequest {
     private String role;
-
+    private Integer roleId;
     private String heropool;
-
-    @Column(name = "peak_sr")
     private Integer peakSr;
 
-    public RoleEntity( String role, String heropool, Integer peakSr ) {
+    public RoleManipulationRequest(String role, Integer roleId, String heropool, Integer peakSr) {
         this.role = role;
+        this.roleId = roleId;
         this.heropool = heropool;
         this.peakSr = peakSr;
-    }
-
-    public RoleEntity() {
     }
 
     public Integer getRoleId() {
         return roleId;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoleId(Integer roleId) {
+        this.roleId = roleId;
     }
 
     public String getHeropool() {
@@ -53,5 +35,13 @@ public class RoleEntity {
 
     public void setPeakSr(Integer peakSr) {
         this.peakSr = peakSr;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

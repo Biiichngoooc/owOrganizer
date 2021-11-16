@@ -1,8 +1,6 @@
 package de.htwberlin.webtech.owOrganizer.web.api;
 
 public class UniligaTeamManipulationRequest {
-
-
         private Integer id;
         private  String name;
         private String uni;

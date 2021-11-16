@@ -20,19 +20,9 @@ public class PlayerService {
 
     public List<Player> findAll(){
         List<PlayerEntity> player = playerRepository.findAll();
-        return player.stream().map(playerEntity -> new Player(
-                playerEntity.getId(),
-                playerEntity.getPlayerName(),
-                playerEntity.getBnetId(),
-                playerEntity.getDiscordTag(),
-                playerEntity.getGender(),
-                playerEntity.getFirstName(),
-                playerEntity.getLastName(),
-                playerEntity.getBirthday(),
-                playerEntity.isStudent(),
-                playerEntity.isCompetitive()
-        )).collect(Collectors.toList());
+        return player.stream().map(this::transformEntity).collect(Collectors.toList());
     }
+
     public Player findById(Integer id){
         var playerEntity = playerRepository.findById(id);
         return playerEntity.map(this::transformEntity).orElse(null);
@@ -88,7 +78,6 @@ public class PlayerService {
                 playerEntity.isCompetitive()
         );
    }
-
 
     public boolean deleteById(Integer id) {
         if (!playerRepository.existsById(id)){

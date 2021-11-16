@@ -9,7 +9,6 @@ public class UniligaTeamEntity {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String name;
     private String uni;
 

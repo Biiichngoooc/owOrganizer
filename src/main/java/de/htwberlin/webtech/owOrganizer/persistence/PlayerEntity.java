@@ -30,8 +30,6 @@ public class PlayerEntity {
     @JoinColumn(name = "team_id")
     private UniligaTeamEntity uniligaTeamEntity;
 
-
-
     public PlayerEntity(String playerName, String bnetId, String discordTag,
                         String gender, String firstName, String lastName,
                         Date birthday, Boolean student, Boolean competitive) {
