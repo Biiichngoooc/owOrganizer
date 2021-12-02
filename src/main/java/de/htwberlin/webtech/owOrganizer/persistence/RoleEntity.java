@@ -18,6 +18,10 @@ public class RoleEntity {
     @Column(name = "peak_sr")
     private Integer peakSr;
 
+    @ManyToOne
+    @JoinColumn(name = "player_id")
+    private PlayerEntity playerEntity;
+
     public RoleEntity( String role, String heropool, Integer peakSr ) {
         this.role = role;
         this.heropool = heropool;

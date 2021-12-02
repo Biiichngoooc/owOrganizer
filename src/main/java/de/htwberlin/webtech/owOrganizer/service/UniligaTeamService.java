@@ -1,9 +1,7 @@
 package de.htwberlin.webtech.owOrganizer.service;
 
 import de.htwberlin.webtech.owOrganizer.persistence.IUniligaTeamRepository;
-import de.htwberlin.webtech.owOrganizer.persistence.PlayerEntity;
 import de.htwberlin.webtech.owOrganizer.persistence.UniligaTeamEntity;
-import de.htwberlin.webtech.owOrganizer.web.api.Player;
 import de.htwberlin.webtech.owOrganizer.web.api.UniligaTeamManipulationRequest;
 import de.htwberlin.webtech.owOrganizer.web.api.UniligaTeam;
 import org.springframework.stereotype.Service;
@@ -50,11 +48,11 @@ public class UniligaTeamService {
     }
 
     public UniligaTeam update(Integer id, UniligaTeamManipulationRequest request){
-        var uniliigaTeamEntityOptional = uniligaTeamRepository.findById(id);
-        if (uniliigaTeamEntityOptional.isEmpty()){
+        var uniligaTeamEntityOptional = uniligaTeamRepository.findById(id);
+        if (uniligaTeamEntityOptional.isEmpty()){
             return null;
         }
-        var uniligaTeamEntity = uniliigaTeamEntityOptional.get();
+        var uniligaTeamEntity = uniligaTeamEntityOptional.get();
         uniligaTeamEntity.setUni(request.getUni());
         uniligaTeamEntity.setName(request.getName());
         return transformEntity(uniligaTeamEntity);

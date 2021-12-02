@@ -7,7 +7,6 @@ import javax.persistence.*;
 public class StudentPlayerEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "s_player_id")
     private Integer sPlayerId;
 
@@ -19,11 +18,12 @@ public class StudentPlayerEntity {
     @Column(name = "city_of_residence")
     private String cityOfResidence;
 
-    @Column(name = "is_foreign")
-    private Boolean foreignPlayer;
-
     @Column(name = "is_owned")
     private Boolean ownedPlayer;
+
+    @ManyToOne
+    @JoinColumn(name = "player_id")
+    private PlayerEntity playerEntity;
 
     public StudentPlayerEntity(String bnetMail, String uni,
                                String cityOfResidence, Boolean foreignPlayer,
@@ -31,7 +31,6 @@ public class StudentPlayerEntity {
         this.bnetMail = bnetMail;
         this.uni = uni;
         this.cityOfResidence = cityOfResidence;
-        this.foreignPlayer = foreignPlayer;
         this.ownedPlayer = ownedPlayer;
     }
 
@@ -64,14 +63,6 @@ public class StudentPlayerEntity {
 
     public void setCityOfResidence(String cityOfResidence) {
         this.cityOfResidence = cityOfResidence;
-    }
-
-    public Boolean getForeignPlayer() {
-        return foreignPlayer;
-    }
-
-    public void setForeignPlayer(Boolean foreignPlayer) {
-        this.foreignPlayer = foreignPlayer;
     }
 
     public Boolean getOwnedPlayer() {
