@@ -4,6 +4,7 @@ package de.htwberlin.webtech.owOrganizer.persistence;
 import javax.persistence.*;
 
 @Entity(name = "student_player")
+@PrimaryKeyJoinColumn(name = "player_id")
 public class StudentPlayerEntity {
 
     @Id

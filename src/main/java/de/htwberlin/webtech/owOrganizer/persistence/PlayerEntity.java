@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity(name = "player")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class PlayerEntity {
 
     @Id
