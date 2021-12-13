@@ -30,12 +30,6 @@ public class RoleRestController {
         return role != null? ResponseEntity.ok(role) : ResponseEntity.notFound().build();
     }
 
-    @GetMapping(path = "api/v1/roles/{heropool}")
-    public ResponseEntity<List<Role>> fetchRolesByHeropool(@PathVariable String heropool){
-        var role = roleService.findByHeropool(heropool);
-        return role != null ? ResponseEntity.ok(role) : ResponseEntity.notFound().build();
-    }
-
     @PostMapping(path = "/api/v1/roles")
     public ResponseEntity<Void> createRole(@RequestBody RoleManipulationRequest request) throws URISyntaxException {
         var role = roleService.create(request);

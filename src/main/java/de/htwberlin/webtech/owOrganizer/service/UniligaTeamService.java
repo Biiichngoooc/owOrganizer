@@ -21,7 +21,7 @@ public class UniligaTeamService {
     public List<UniligaTeam> findAll(){
         List<UniligaTeamEntity> uniligaTeam = uniligaTeamRepository.findAll();
         return uniligaTeam.stream().map(uniligaTeamEntity-> new UniligaTeam(
-                uniligaTeamEntity.getId(),
+                uniligaTeamEntity.getUniligaTeamId(),
                 uniligaTeamEntity.getName(),
                 uniligaTeamEntity.getUni()
         )).collect(Collectors.toList());
@@ -33,7 +33,7 @@ public class UniligaTeamService {
     public List<UniligaTeam> findByUni(String uni){
         List<UniligaTeamEntity> uniligaTeam = uniligaTeamRepository.findAllByUni(uni);
         return uniligaTeam.stream().map(uniligaTeamEntity -> new UniligaTeam(
-                uniligaTeamEntity.getId(),
+                uniligaTeamEntity.getUniligaTeamId(),
                 uniligaTeamEntity.getName(),
                 uniligaTeamEntity.getUni()
         )).collect(Collectors.toList());
@@ -60,7 +60,7 @@ public class UniligaTeamService {
 
     private UniligaTeam transformEntity(UniligaTeamEntity uniligaTeamEntity){
         return new UniligaTeam(
-                uniligaTeamEntity.getId(),
+                uniligaTeamEntity.getUniligaTeamId(),
                 uniligaTeamEntity.getName(),
                 uniligaTeamEntity.getUni()
         );

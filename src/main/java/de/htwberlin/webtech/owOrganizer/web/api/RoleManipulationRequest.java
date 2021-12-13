@@ -5,12 +5,14 @@ public class RoleManipulationRequest {
     private Integer roleId;
     private String heropool;
     private Integer peakSr;
+    private Integer playerId;
 
-    public RoleManipulationRequest(String role, Integer roleId, String heropool, Integer peakSr) {
+    public RoleManipulationRequest(String role, Integer roleId, String heropool, Integer peakSr, Integer playerId) {
         this.role = role;
         this.roleId = roleId;
         this.heropool = heropool;
         this.peakSr = peakSr;
+        this.playerId = playerId;
     }
 
     public Integer getRoleId() {
@@ -43,5 +45,13 @@ public class RoleManipulationRequest {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Integer getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(Integer playerId) {
+        this.playerId = playerId;
     }
 }

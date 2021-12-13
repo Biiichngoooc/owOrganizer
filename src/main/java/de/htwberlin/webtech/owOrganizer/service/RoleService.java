@@ -1,5 +1,6 @@
 package de.htwberlin.webtech.owOrganizer.service;
 
+import de.htwberlin.webtech.owOrganizer.persistence.IPlayerRepository;
 import de.htwberlin.webtech.owOrganizer.persistence.IRoleRepository;
 import de.htwberlin.webtech.owOrganizer.persistence.RoleEntity;
 import de.htwberlin.webtech.owOrganizer.web.api.Role;
@@ -13,10 +14,14 @@ import java.util.stream.Collectors;
 public class RoleService {
 
     private final IRoleRepository roleRepository;
+    private final IPlayerRepository playerRepository;
 
-    public RoleService(IRoleRepository roleRepository){
+    public RoleService(IRoleRepository roleRepository, IPlayerRepository playerRepository){
         this.roleRepository = roleRepository;
+        this.playerRepository = playerRepository;
     }
+
+
 
     public List<Role> findAll(){
         List<RoleEntity> role = roleRepository.findAll();
@@ -24,8 +29,8 @@ public class RoleService {
                 roleEntity.getRoleId(),
                 roleEntity.getRole(),
                 roleEntity.getHeropool(),
-                roleEntity.getPeakSr()
-        )).collect(Collectors.toList());
+                roleEntity.getPeakSr(),
+                roleEntity.getPlayerEntity().getId())).collect(Collectors.toList());
     }
 
     public Role findById(Integer roleId){
@@ -33,21 +38,13 @@ public class RoleService {
         return roleEntity.map(this::transformEntity).orElse(null);
     }
 
-    public List<Role> findByHeropool(String heropool){
-        List<RoleEntity> role = roleRepository.findAllByRole(heropool);
-        return role.stream().map(roleEntity -> new Role(
-                roleEntity.getRoleId(),
-                roleEntity.getRole(),
-                roleEntity.getHeropool(),
-                roleEntity.getPeakSr()
-        )).collect(Collectors.toList());
-    }
     public Role create(RoleManipulationRequest request){
+        var player = playerRepository.findById(request.getPlayerId()).orElseThrow();
         var roleEntity = new RoleEntity(
                 request.getRole(),
                 request.getHeropool(),
-                request.getPeakSr()
-        );
+                request.getPeakSr(),
+                player);
         roleEntity = roleRepository.save(roleEntity);
         return transformEntity(roleEntity);
     }
@@ -71,8 +68,8 @@ public class RoleService {
                 roleEntity.getRoleId(),
                 roleEntity.getRole(),
                 roleEntity.getHeropool(),
-                roleEntity.getPeakSr()
-        );
+                roleEntity.getPeakSr(),
+                roleEntity.getPlayerEntity().getId());
     }
 
     public boolean deleteById(Integer roleId) {

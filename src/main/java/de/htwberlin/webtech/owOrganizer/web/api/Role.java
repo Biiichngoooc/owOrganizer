@@ -5,12 +5,14 @@ public class Role {
     private String role;
     private String heropool;
     private Integer peakSr;
+    private Integer playerId;
 
-    public Role(Integer roleId, String role, String heropool, Integer peakSr) {
+    public Role(Integer roleId, String role, String heropool, Integer peakSr, Integer playerId) {
         this.roleId = roleId;
         this.role = role;
         this.heropool = heropool;
         this.peakSr = peakSr;
+        this.playerId = playerId;
     }
 
     public Integer getRoleId() {
@@ -43,6 +45,14 @@ public class Role {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Integer getPlayerId() {
+        return playerId;
+    }
+
+    public void setPlayerId(Integer playerId) {
+        this.playerId = playerId;
     }
 }
 

@@ -6,9 +6,9 @@ import javax.persistence.*;
 public class UniligaTeamEntity {
 
     @Id
-    @Column(name = "id")
+    @Column(name = "uniliga_team_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer uniligaTeamId;
     private String name;
     private String uni;
 
@@ -21,8 +21,8 @@ public class UniligaTeamEntity {
     }
 
 
-    public Integer getId() {
-        return id;
+    public Integer getUniligaTeamId() {
+        return uniligaTeamId;
     }
 
     public String getName() {

@@ -28,7 +28,7 @@ public class PlayerEntity {
     @Column(name= "is_competitive")
     private Boolean competitive;
     @ManyToOne
-    @JoinColumn(name = "team_id")
+    @JoinColumn(name = "team_id", referencedColumnName = "uniliga_team_id")
     private UniligaTeamEntity uniligaTeamEntity;
 
     public PlayerEntity(String playerName, String bnetId, String discordTag,

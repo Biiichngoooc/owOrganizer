@@ -13,6 +13,7 @@ public class Player {
     protected Date birthday;
     protected Boolean isStudent;
     protected Boolean isCompetitive;
+    protected UniligaTeam uniligaTeam;
 
 
     public Player(Integer id, String playerName, String bnetId, String discordTag,
@@ -34,10 +35,6 @@ public class Player {
 
     public Integer getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getPlayerName() {

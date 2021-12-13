@@ -1,7 +1,6 @@
 package de.htwberlin.webtech.owOrganizer.persistence;
 
 import javax.persistence.*;
-import java.net.Inet4Address;
 
 @Entity(name = "role")
 public class RoleEntity {
@@ -18,14 +17,15 @@ public class RoleEntity {
     @Column(name = "peak_sr")
     private Integer peakSr;
 
-    @ManyToOne
-    @JoinColumn(name = "player_id")
+    @OneToOne
+    @JoinColumn(name = "player_id", referencedColumnName = "id")
     private PlayerEntity playerEntity;
 
-    public RoleEntity( String role, String heropool, Integer peakSr ) {
+    public RoleEntity(String role, String heropool, Integer peakSr, PlayerEntity playerEntity) {
         this.role = role;
         this.heropool = heropool;
         this.peakSr = peakSr;
+        this.playerEntity = playerEntity;
     }
 
     public RoleEntity() {
@@ -57,5 +57,13 @@ public class RoleEntity {
 
     public void setPeakSr(Integer peakSr) {
         this.peakSr = peakSr;
+    }
+
+    public PlayerEntity getPlayerEntity() {
+        return playerEntity;
+    }
+
+    public void setPlayerEntity(PlayerEntity playerEntity) {
+        this.playerEntity = playerEntity;
     }
 }

@@ -4,12 +4,8 @@ package de.htwberlin.webtech.owOrganizer.persistence;
 import javax.persistence.*;
 
 @Entity(name = "student_player")
-@PrimaryKeyJoinColumn(name = "player_id")
-public class StudentPlayerEntity {
-
-    @Id
-    @Column(name = "s_player_id")
-    private Integer sPlayerId;
+@PrimaryKeyJoinColumn(name = "s_player_id")
+public class StudentPlayerEntity extends PlayerEntity {
 
     @Column(name = "bnet_mail")
     private String bnetMail;
@@ -38,9 +34,6 @@ public class StudentPlayerEntity {
     public StudentPlayerEntity() {
     }
 
-    public Integer getsPlayerId() {
-        return sPlayerId;
-    }
 
     public String getBnetMail() {
         return bnetMail;
