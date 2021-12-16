@@ -44,7 +44,7 @@ public class UniligaTeamRestController {
         return ResponseEntity.created(uri).build();
     }
 
-    @PostMapping(path = "/api/v1/uniligaTeams/{id}")
+    @PutMapping (path = "/api/v1/uniligaTeams/{id}")
     public ResponseEntity<UniligaTeam> updateUniligaTeam(@PathVariable Integer id,
                                                          @RequestBody UniligaTeamManipulationRequest request){
         var uniligaTeam = uniligaTeamService.update(id, request);

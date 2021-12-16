@@ -55,6 +55,7 @@ public class UniligaTeamService {
         var uniligaTeamEntity = uniligaTeamEntityOptional.get();
         uniligaTeamEntity.setUni(request.getUni());
         uniligaTeamEntity.setName(request.getName());
+        uniligaTeamEntity = uniligaTeamRepository.save(uniligaTeamEntity);
         return transformEntity(uniligaTeamEntity);
     }
 

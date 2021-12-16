@@ -2,7 +2,7 @@ package de.htwberlin.webtech.owOrganizer.web.api;
 
 public class UniligaTeamManipulationRequest {
         private Integer id;
-        private  String name;
+        private String name;
         private String uni;
 
         public UniligaTeamManipulationRequest(Integer id, String name, String uni) {
@@ -11,7 +11,7 @@ public class UniligaTeamManipulationRequest {
             this.uni = uni;
         }
 
-        public UniligaTeamManipulationRequest(){}
+        public UniligaTeamManipulationRequest() {}
 
         public Integer getId() {
             return id;
