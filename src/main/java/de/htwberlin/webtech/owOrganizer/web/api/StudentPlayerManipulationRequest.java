@@ -21,7 +21,7 @@ public class StudentPlayerManipulationRequest {
         }
 
 
-
+    public StudentPlayerManipulationRequest(){}
     public String getbNetMail() {
             return bNetMail;
         }

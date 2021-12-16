@@ -11,6 +11,8 @@ public class UniligaTeamManipulationRequest {
             this.uni = uni;
         }
 
+        public UniligaTeamManipulationRequest(){}
+
         public Integer getId() {
             return id;
         }
