@@ -15,6 +15,8 @@ public class RoleManipulationRequest {
         this.playerId = playerId;
     }
 
+    public RoleManipulationRequest() {}
+
     public Integer getRoleId() {
         return roleId;
     }

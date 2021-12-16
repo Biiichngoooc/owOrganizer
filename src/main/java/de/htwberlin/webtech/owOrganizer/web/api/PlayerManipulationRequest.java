@@ -29,6 +29,8 @@ public class PlayerManipulationRequest {
         this.isCompetitive = isCompetitive;
     }
 
+    public PlayerManipulationRequest() {}
+
     public String getPlayerName() {
         return playerName;
     }
