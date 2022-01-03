@@ -1,5 +1,7 @@
 package de.htwberlin.webtech.owOrganizer.web.api;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.sql.Date;
 
 public class Player {
@@ -10,6 +12,7 @@ public class Player {
     protected String gender;
     protected String firstName;
     protected String lastName;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss Z")
     protected Date birthday;
     protected Boolean isStudent;
     protected Boolean isCompetitive;

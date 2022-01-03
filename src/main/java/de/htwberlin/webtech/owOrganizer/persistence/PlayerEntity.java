@@ -1,5 +1,7 @@
 package de.htwberlin.webtech.owOrganizer.persistence;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -22,6 +24,7 @@ public class PlayerEntity {
     private String firstName;
     @Column(name= "last_name")
     private String lastName;
+    @Basic
     private Date birthday;
     @Column(name= "is_student", columnDefinition = "boolean default false")
     private Boolean student;
