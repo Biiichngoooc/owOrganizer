@@ -1,13 +1,22 @@
 package de.htwberlin.webtech.owOrganizer.web.api;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 import java.sql.Date;
 
 public class PlayerManipulationRequest {
+    @NotBlank(message = "Must not be empty.")
     private String playerName;
+    @NotBlank(message = "Must not be empty.")
     private String bnetId;
+    @NotBlank(message = "Must not be empty.")
     private String discordTag;
+    @NotBlank(message = "Must not be empty.")
     private String gender;
+    @NotBlank(message = "Must not be empty.")
     private String firstName;
+    @NotBlank(message = "Must not be empty.")
     private String lastName;
     private Date birthday;
     private Boolean isStudent;

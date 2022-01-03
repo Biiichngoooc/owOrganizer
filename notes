@@ -7,3 +7,4 @@ Service anlegen (erstellt neue Objekte)
 IRepository -> Service -> RestController
 
 birthday kaputt datenbank
+enum gender adden

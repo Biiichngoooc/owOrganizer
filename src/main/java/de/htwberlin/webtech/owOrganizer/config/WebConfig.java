@@ -15,7 +15,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedMethods("*")
                 .allowedOrigins(
                         "http://localhost:2000",
-                        "https://uniliga-teams-frontend.herokuapp.com/"
+                        "https://uniliga-teams-frontend.herokuapp.com"
                 );
     }
 }

@@ -6,6 +6,7 @@ import de.htwberlin.webtech.owOrganizer.web.api.PlayerManipulationRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -30,10 +31,10 @@ public class PlayerRestController {
     }
 
    @PostMapping(path = "/api/v1/players")
-    public ResponseEntity<Void> createPlayer(@RequestBody PlayerManipulationRequest request) throws URISyntaxException{
-        var player = playerService.create(request);
-        URI uri = new URI("api/v1/players/" + player.getId());
-        return ResponseEntity.created(uri).build();
+    public ResponseEntity<Void> createPlayer(@Valid @RequestBody PlayerManipulationRequest request) throws URISyntaxException{
+            var player = playerService.create(request);
+            URI uri = new URI("api/v1/players/" + player.getId());
+            return ResponseEntity.created(uri).build();
     }
 
     @PutMapping(path = "/api/v1/players/{id}")
@@ -47,6 +48,7 @@ public class PlayerRestController {
         boolean successful = playerService.deleteById(id);
         return successful ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
+
 }
 
 

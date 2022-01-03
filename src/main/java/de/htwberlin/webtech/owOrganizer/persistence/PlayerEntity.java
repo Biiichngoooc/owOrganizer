@@ -23,9 +23,9 @@ public class PlayerEntity {
     @Column(name= "last_name")
     private String lastName;
     private Date birthday;
-    @Column(name= "is_student")
+    @Column(name= "is_student", columnDefinition = "boolean default false")
     private Boolean student;
-    @Column(name= "is_competitive")
+    @Column(name= "is_competitive", columnDefinition = "boolean default false")
     private Boolean competitive;
     @ManyToOne
     @JoinColumn(name = "team_id", referencedColumnName = "uniliga_team_id")
