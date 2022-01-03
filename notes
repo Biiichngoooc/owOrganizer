@@ -1,3 +1,4 @@
+Allgemeines Vorgehen:
 Entity anlegen (construct ohne id)
 (Interface Repository anlegen) ?
 api java class anlegen
@@ -6,5 +7,10 @@ Service anlegen (erstellt neue Objekte)
 
 IRepository -> Service -> RestController
 
-birthday kaputt datenbank
+
+Bugs to fix:
+birthday java sql date wird als int value gespeichert?
+
+General tasks:
 enum gender adden
+birthday validierung
