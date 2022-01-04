@@ -12,7 +12,7 @@ public class Player {
     protected String gender;
     protected String firstName;
     protected String lastName;
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss Z")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd.MM.yyyy")
     protected Date birthday;
     protected Boolean isStudent;
     protected Boolean isCompetitive;
