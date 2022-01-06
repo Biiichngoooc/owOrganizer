@@ -1,8 +1,6 @@
 package de.htwberlin.webtech.owOrganizer.web.api;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
 import java.sql.Date;
 
 public class PlayerManipulationRequest {
@@ -21,12 +19,19 @@ public class PlayerManipulationRequest {
     private Date birthday;
     private Boolean isStudent;
     private Boolean isCompetitive;
+    private String bnetMail;
+    private String uni;
+    private String cityOfResidence;
+    private Boolean owned;
+    private String uniMail;
 
     public PlayerManipulationRequest(String playerName, String bnetId,
                                      String discordTag, String gender,
                                      String firstName, String lastName,
                                      Date birthday, Boolean isStudent,
-                                     Boolean isCompetitive) {
+                                     Boolean isCompetitive, String bnetMail,
+                                     String uni, String cityOfResidence,
+                                     Boolean owned, String uniMail) {
         this.playerName = playerName;
         this.bnetId = bnetId;
         this.discordTag = discordTag;
@@ -36,6 +41,11 @@ public class PlayerManipulationRequest {
         this.birthday = birthday;
         this.isStudent = isStudent;
         this.isCompetitive = isCompetitive;
+        this.bnetMail = bnetMail;
+        this.uni = uni;
+        this.cityOfResidence =cityOfResidence;
+        this.owned = owned;
+        this.uniMail = uniMail;
     }
 
     public PlayerManipulationRequest() {}
@@ -110,5 +120,45 @@ public class PlayerManipulationRequest {
 
     public void setCompetitive(Boolean competitive) {
         isCompetitive = competitive;
+    }
+
+    public String getBnetMail() {
+        return bnetMail;
+    }
+
+    public void setBnetMail(String bnetMail) {
+        this.bnetMail = bnetMail;
+    }
+
+    public String getUni() {
+        return uni;
+    }
+
+    public void setUni(String uni) {
+        this.uni = uni;
+    }
+
+    public String getCityOfResidence() {
+        return cityOfResidence;
+    }
+
+    public void setCityOfResidence(String cityOfResidence) {
+        this.cityOfResidence = cityOfResidence;
+    }
+
+    public Boolean getOwned() {
+        return owned;
+    }
+
+    public void setOwned(Boolean owned) {
+        this.owned = owned;
+    }
+
+    public String getUniMail() {
+        return uniMail;
+    }
+
+    public void setUniMail(String uniMail) {
+        this.uniMail = uniMail;
     }
 }

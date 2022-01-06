@@ -1,7 +1,5 @@
 package de.htwberlin.webtech.owOrganizer.persistence;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -33,10 +31,22 @@ public class PlayerEntity {
     @ManyToOne
     @JoinColumn(name = "team_id", referencedColumnName = "uniliga_team_id")
     private UniligaTeamEntity uniligaTeamEntity;
+    @Column(name = "bnet_mail")
+    private String bnetMail;
+    @Column(name = "uni")
+    private String uni;
+    @Column(name = "city_of_residence")
+    private String cityOfResidence;
+    @Column(name = "is_owned")
+    private Boolean owned;
+    @Column(name = "uni_mail")
+    private String uniMail;
 
     public PlayerEntity(String playerName, String bnetId, String discordTag,
                         String gender, String firstName, String lastName,
-                        Date birthday, Boolean student, Boolean competitive) {
+                        Date birthday, Boolean student, Boolean competitive,
+                        String bnetMail, String uni, String cityOfResidence,
+                        Boolean owned, String uniMail) {
         this.playerName = playerName;
         this.bnetId = bnetId;
         this.discordTag = discordTag;
@@ -46,6 +56,11 @@ public class PlayerEntity {
         this.birthday = birthday;
         this.student = student;
         this.competitive = competitive;
+        this.bnetMail = bnetMail;
+        this.uni = uni;
+        this.cityOfResidence = cityOfResidence;
+        this.owned = owned;
+        this.uniMail = uniMail;
     }
 
     protected PlayerEntity() {
@@ -125,5 +140,53 @@ public class PlayerEntity {
 
     public void setCompetitive(Boolean compStatus) {
         this.competitive = compStatus;
+    }
+
+    public String getBnetMail() {
+        return bnetMail;
+    }
+
+    public void setBnetMail(String bnetMail) {
+        this.bnetMail = bnetMail;
+    }
+
+    public UniligaTeamEntity getUniligaTeamEntity() {
+        return uniligaTeamEntity;
+    }
+
+    public void setUniligaTeamEntity(UniligaTeamEntity uniligaTeamEntity) {
+        this.uniligaTeamEntity = uniligaTeamEntity;
+    }
+
+    public String getUni() {
+        return uni;
+    }
+
+    public void setUni(String uni) {
+        this.uni = uni;
+    }
+
+    public String getCityOfResidence() {
+        return cityOfResidence;
+    }
+
+    public void setCityOfResidence(String cityOfResidence) {
+        this.cityOfResidence = cityOfResidence;
+    }
+
+    public Boolean getOwned() {
+        return owned;
+    }
+
+    public void setOwned(Boolean owned) {
+        this.owned = owned;
+    }
+
+    public String getUniMail() {
+        return uniMail;
+    }
+
+    public void setUniMail(String uniMail) {
+        this.uniMail = uniMail;
     }
 }

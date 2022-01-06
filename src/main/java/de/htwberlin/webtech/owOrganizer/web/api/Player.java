@@ -17,11 +17,17 @@ public class Player {
     protected Boolean isStudent;
     protected Boolean isCompetitive;
     protected UniligaTeam uniligaTeam;
+    protected String bnetMail;
+    protected String uni;
+    protected String cityOfResidence;
+    protected Boolean owned;
+    protected String uniMail;
 
 
     public Player(Integer id, String playerName, String bnetId, String discordTag,
                   String gender, String firstName, String lastName, Date birthday,
-                  Boolean isStudent, Boolean isCompetitive) {
+                  Boolean isStudent, Boolean isCompetitive, String bnetMail, String uni,
+                  String cityOfResidence, Boolean owned, String uniMail) {
         this.id = id;
         this.playerName = playerName;
         this.bnetId = bnetId;
@@ -32,6 +38,11 @@ public class Player {
         this.birthday = birthday;
         this.isStudent = isStudent;
         this.isCompetitive = isCompetitive;
+        this.bnetMail = bnetMail;
+        this.uni = uni;
+        this.cityOfResidence = cityOfResidence;
+        this.owned = owned;
+        this.uniMail = uniMail;
     }
 
 
@@ -110,5 +121,45 @@ public class Player {
 
     public void setCompetitive(Boolean competitive) {
         isCompetitive = competitive;
+    }
+
+    public String getBnetMail() {
+        return bnetMail;
+    }
+
+    public void setBnetMail(String bnetMail) {
+        this.bnetMail = bnetMail;
+    }
+
+    public String getUni() {
+        return uni;
+    }
+
+    public void setUni(String uni) {
+        this.uni = uni;
+    }
+
+    public String getCityOfResidence() {
+        return cityOfResidence;
+    }
+
+    public void setCityOfResidence(String cityOfResidence) {
+        this.cityOfResidence = cityOfResidence;
+    }
+
+    public Boolean getOwned() {
+        return owned;
+    }
+
+    public void setOwned(Boolean owned) {
+        this.owned = owned;
+    }
+
+    public String getUniMail() {
+        return uniMail;
+    }
+
+    public void setUniMail(String uniMail) {
+        this.uniMail = uniMail;
     }
 }

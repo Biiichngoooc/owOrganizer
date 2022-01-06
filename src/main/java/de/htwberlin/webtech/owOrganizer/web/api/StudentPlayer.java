@@ -2,25 +2,29 @@ package de.htwberlin.webtech.owOrganizer.web.api;
 
 import java.sql.Date;
 
-public class StudentPlayer extends Player{
+public class StudentPlayer{
 
     private String bNetMail;
     private String uni;
     private String cityOfResidence;
     private Boolean ownedPlayer;
 
-    public StudentPlayer(Integer id, String playerName, String bnetId,
-                         String discordTag, String gender, String firstName,
-                         String lastName, Date birthday, Boolean isStudent,
-                         Boolean isCompetitive, String bNetMail, String uni,
-                         String cityOfResidence, Boolean ownedPlayer) {
-        super(id, playerName, bnetId, discordTag, gender, firstName,
-                lastName, birthday, isStudent, isCompetitive);
-        this.bNetMail = bNetMail;
-        this.uni = uni;
-        this.cityOfResidence = cityOfResidence;
-        this.ownedPlayer = ownedPlayer;
+//    public StudentPlayer(Integer id, String playerName, String bnetId,
+//                         String discordTag, String gender, String firstName,
+//                         String lastName, Date birthday, Boolean isStudent,
+//                         Boolean isCompetitive, String bNetMail, String uni,
+//                         String cityOfResidence, Boolean ownedPlayer) {
+////        super(id, playerName, bnetId, discordTag, gender, firstName,
+////                lastName, birthday, isStudent, isCompetitive);
+//        this.bNetMail = bNetMail;
+//        this.uni = uni;
+//        this.cityOfResidence = cityOfResidence;
+//        this.ownedPlayer = ownedPlayer;
+//    }
+    public StudentPlayer () {
+
     }
+
 
     public String getbNetMail() {
         return bNetMail;

@@ -1,21 +1,12 @@
 package de.htwberlin.webtech.owOrganizer.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.util.StdDateFormat;
 import de.htwberlin.webtech.owOrganizer.persistence.IPlayerRepository;
 import de.htwberlin.webtech.owOrganizer.persistence.PlayerEntity;
 import de.htwberlin.webtech.owOrganizer.web.api.Player;
 import de.htwberlin.webtech.owOrganizer.web.api.PlayerManipulationRequest;
 import org.springframework.stereotype.Service;
-import org.w3c.dom.events.Event;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.TimeZone;
 import java.util.stream.Collectors;
 
 @Service
@@ -47,7 +38,12 @@ public class PlayerService {
                 request.getLastName(),
                 request.getBirthday(),
                 request.getStudent(),
-                request.getCompetitive()
+                request.getCompetitive(),
+                request.getBnetMail(),
+                request.getUni(),
+                request.getCityOfResidence(),
+                request.getOwned(),
+                request.getUniMail()
         );
         playerEntity = playerRepository.save(playerEntity);
         return transformEntity(playerEntity);
@@ -84,7 +80,12 @@ public class PlayerService {
                 playerEntity.getLastName(),
                 playerEntity.getBirthday(),
                 playerEntity.isStudent(),
-                playerEntity.isCompetitive()
+                playerEntity.isCompetitive(),
+                playerEntity.getBnetMail(),
+                playerEntity.getUni(),
+                playerEntity.getCityOfResidence(),
+                playerEntity.getOwned(),
+                playerEntity.getUniMail()
         );
    }
 
