@@ -1,10 +1,8 @@
 package de.htwberlin.webtech.owOrganizer;
 
 import de.htwberlin.webtech.owOrganizer.service.RoleService;
-import de.htwberlin.webtech.owOrganizer.service.UniligaTeamService;
 import de.htwberlin.webtech.owOrganizer.web.RoleRestController;
 import de.htwberlin.webtech.owOrganizer.web.api.Role;
-import de.htwberlin.webtech.owOrganizer.web.api.UniligaTeam;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyString;
+
 import static org.mockito.Mockito.doReturn;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
