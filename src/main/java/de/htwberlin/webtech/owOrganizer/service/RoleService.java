@@ -21,8 +21,6 @@ public class RoleService {
         this.playerRepository = playerRepository;
     }
 
-
-
     public List<Role> findAll(){
         List<RoleEntity> role = roleRepository.findAll();
         return role.stream().map(roleEntity-> new Role(

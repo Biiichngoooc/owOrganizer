@@ -1,6 +1,7 @@
 package de.htwberlin.webtech.owOrganizer.web.api;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.sql.Date;
 
 public class PlayerManipulationRequest {
