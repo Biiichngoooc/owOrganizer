@@ -37,9 +37,11 @@ public class PlayerRestControllerTest {
     void should_return_found_players_from_player_service() throws Exception {
          var players = List.of(
                  new Player(1,"jk11", "Jack#11", "Jackie#12",
-                         "male", "Jack", "Müller", Date.valueOf("1996-16-12"), true, true),
+                         "male", "Jack", "Müller", Date.valueOf("1996-16-12"), true, true,
+                         "Jackie@gmail.com", "HTW Berlin", "Berlin", true, "Jackie@htw-berlin.de" ),
                 new Player(2,"marie11", "Marie#11", "Marie#12",
-                        "female", "Marie", "Meier", Date.valueOf("1997-11-01"), true, false)
+                        "female", "Marie", "Meier", Date.valueOf("1997-11-01"), true, false,
+                        "Marie@gmail.com", "HTW Berlin", "Berlin", true, "Marie@htw-berlin.de" )
          );
          doReturn(players).when(playerService).findAll();
 
@@ -55,6 +57,11 @@ public class PlayerRestControllerTest {
                  .andExpect(jsonPath("$[0].birthday").value("1996-16-12"))
                  .andExpect(jsonPath("$[0].isStudent").value(true))
                  .andExpect(jsonPath("$[0].isCompetitive").value(true))
+                 .andExpect(jsonPath("$[0].bnetMail").value("Jackie@gmail.com"))
+                 .andExpect(jsonPath("$[0].uni").value("HTW Berlin"))
+                 .andExpect(jsonPath("$[0].cityOfResidence").value("Berlin"))
+                 .andExpect(jsonPath("$[0].owned").value(true))
+                 .andExpect(jsonPath("$[0].uniMail").value("Jackie@htw-berlin.de"))
                  .andExpect(jsonPath("$[1].playerName").value("marie11"))
                  .andExpect(jsonPath("$[1].bnetId").value("Marie#11"))
                  .andExpect(jsonPath("$[1].discordTag").value("Marie#12"))
@@ -63,7 +70,12 @@ public class PlayerRestControllerTest {
                  .andExpect(jsonPath("$[1].lastName").value("Meier"))
                  .andExpect(jsonPath("$[1].birthday").value("1997-11-01"))
                  .andExpect(jsonPath("$[1].isStudent").value(true))
-                 .andExpect(jsonPath("$[1].isCompetitive").value(false));
+                 .andExpect(jsonPath("$[1].isCompetitive").value(false))
+                 .andExpect(jsonPath("$[1].bnetMail").value("Jackie@gmail.com"))
+                 .andExpect(jsonPath("$[1].uni").value("HTW Berlin"))
+                 .andExpect(jsonPath("$[1].cityOfResidence").value("Berlin"))
+                 .andExpect(jsonPath("$[1].owned").value(true))
+                 .andExpect(jsonPath("$[0].uniMail").value("Marie@htw-berlin.de"));
      }
 
     @Test
@@ -87,8 +99,10 @@ public class PlayerRestControllerTest {
                 "    \"birthday\": \"1996-12-16\",\n" +
                 "    \"student\": true,\n" +
                 "    \"competitive\": true}";
+
         var player = new Player(100,null,null,null,null,null,
-                null, null, false, false);
+                null, null, false, false, null, null, null,
+                true, null);
 
         doReturn(player).when(playerService).create(any());
 
@@ -122,9 +136,6 @@ public class PlayerRestControllerTest {
                 )
                 .andExpect(status().isBadRequest());
     }
-
-
-
 
 }
 
