@@ -33,8 +33,11 @@ public class PlayerRestController {
    @PostMapping(path = "/api/v1/players")
     public ResponseEntity<Void> createPlayer(@Valid @RequestBody PlayerManipulationRequest request) throws URISyntaxException{
             var player = playerService.create(request);
-            URI uri = new URI("api/v1/players/" + player.getId());
-            return ResponseEntity.created(uri).build();
+            URI uri = new URI("/api/v1/players/" + player.getId());
+            return ResponseEntity
+                    .created(uri)
+                    .header("Access-Control-Expose-Headers", "Location")
+                    .build();
     }
 
     @PutMapping(path = "/api/v1/players/{id}")
