@@ -19,7 +19,7 @@ public class PlayerRestController {
         this.playerService = playerService;
     }
 
-    @GetMapping(path = "/api/v1/players" )
+    @GetMapping(path = "/api/v1/players")
     public ResponseEntity<List<Player>> fetchPlayers() {
         return ResponseEntity.ok(playerService.findAll());
     }
@@ -27,27 +27,23 @@ public class PlayerRestController {
     @GetMapping(path = "/api/v1/players/{id}")
     public ResponseEntity<Player> fetchPlayerById(@PathVariable Integer id) {
         var player = playerService.findById(id);
-        return player != null? ResponseEntity.ok(player) : ResponseEntity.notFound().build();
+        return player != null ? ResponseEntity.ok(player) : ResponseEntity.notFound().build();
     }
 
-   @PostMapping(path = "/api/v1/players")
-    public ResponseEntity<Void> createPlayer(@Valid @RequestBody PlayerManipulationRequest request) throws URISyntaxException{
-            var player = playerService.create(request);
-            URI uri = new URI("/api/v1/players/" + player.getId());
-            return ResponseEntity
-                    .created(uri)
-                    .header("Access-Control-Expose-Headers", "Location")
-                    .build();
+    @PostMapping(path = "/api/v1/players")
+    public ResponseEntity<Player> createPlayer(@Valid @RequestBody PlayerManipulationRequest request) {
+        var player = playerService.create(request);
+        return ResponseEntity.ok(player);
     }
 
     @PutMapping(path = "/api/v1/players/{id}")
     public ResponseEntity<Player> updatePlayer(@PathVariable Integer id, @RequestBody PlayerManipulationRequest request) {
         var player = playerService.update(id, request);
-        return player != null? ResponseEntity.ok(player) : ResponseEntity.notFound().build();
+        return player != null ? ResponseEntity.ok(player) : ResponseEntity.notFound().build();
     }
 
     @DeleteMapping(path = "/api/v1/players/{id}")
-    public ResponseEntity<Void> deletePlayer(@PathVariable Integer id){
+    public ResponseEntity<Void> deletePlayer(@PathVariable Integer id) {
         boolean successful = playerService.deleteById(id);
         return successful ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }

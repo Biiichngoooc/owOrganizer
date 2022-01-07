@@ -11,22 +11,22 @@ public class PlayerEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    @Column(name= "player_name")
+    @Column(name = "player_name")
     private String playerName;
-    @Column(name= "bnet_id")
+    @Column(name = "bnet_id")
     private String bnetId;
-    @Column(name= "discord_tag")
+    @Column(name = "discord_tag")
     private String discordTag;
     private String gender;
-    @Column(name= "first_name")
+    @Column(name = "first_name")
     private String firstName;
-    @Column(name= "last_name")
+    @Column(name = "last_name")
     private String lastName;
     @Basic
     private Date birthday;
-    @Column(name= "is_student", columnDefinition = "boolean default false")
+    @Column(name = "is_student", columnDefinition = "boolean default false")
     private Boolean student;
-    @Column(name= "is_competitive", columnDefinition = "boolean default false")
+    @Column(name = "is_competitive", columnDefinition = "boolean default false")
     private Boolean competitive;
     @ManyToOne
     @JoinColumn(name = "team_id", referencedColumnName = "uniliga_team_id")
@@ -127,7 +127,7 @@ public class PlayerEntity {
     }
 
     public boolean isStudent() {
-        return student;
+        return Boolean.TRUE.equals(student);
     }
 
     public void setStudent(Boolean studentStatus) {
@@ -135,7 +135,7 @@ public class PlayerEntity {
     }
 
     public boolean isCompetitive() {
-        return competitive;
+        return Boolean.TRUE.equals(competitive);
     }
 
     public void setCompetitive(Boolean compStatus) {
@@ -175,7 +175,7 @@ public class PlayerEntity {
     }
 
     public Boolean getOwned() {
-        return owned;
+        return Boolean.TRUE.equals(owned);
     }
 
     public void setOwned(Boolean owned) {
