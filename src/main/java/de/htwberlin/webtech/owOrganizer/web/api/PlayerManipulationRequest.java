@@ -5,7 +5,7 @@ import javax.validation.constraints.Size;
 import java.sql.Date;
 
 public class PlayerManipulationRequest {
-    @Size(min = 5, message = "Please provide a player name with 5 characters or more.")
+    @NotBlank(message = "Must not be empty.")
     private String playerName;
     @NotBlank(message = "Must not be empty.")
     private String bnetId;

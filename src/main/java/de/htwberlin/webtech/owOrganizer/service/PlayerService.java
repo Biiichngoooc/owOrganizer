@@ -80,6 +80,11 @@ public class PlayerService {
         playerEntity.setFirstName(request.getFirstName());
         playerEntity.setLastName(request.getLastName());
         playerEntity.setGender(request.getGender());
+        playerEntity.setBnetMail(request.getBnetMail());
+        playerEntity.setUni(request.getUni());
+        playerEntity.setCityOfResidence(request.getCityOfResidence());
+        playerEntity.setOwned(request.getOwned());
+        playerEntity.setUniMail(request.getUniMail());
         playerEntity = playerRepository.save(playerEntity);
         return transformEntity(playerEntity);
     }
