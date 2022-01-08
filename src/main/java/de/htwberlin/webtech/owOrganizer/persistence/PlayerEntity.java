@@ -2,9 +2,9 @@ package de.htwberlin.webtech.owOrganizer.persistence;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Set;
 
 @Entity(name = "player")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class PlayerEntity {
 
     @Id

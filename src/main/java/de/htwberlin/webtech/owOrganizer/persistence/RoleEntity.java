@@ -1,5 +1,4 @@
 package de.htwberlin.webtech.owOrganizer.persistence;
-
 import javax.persistence.*;
 
 @Entity(name = "role")
