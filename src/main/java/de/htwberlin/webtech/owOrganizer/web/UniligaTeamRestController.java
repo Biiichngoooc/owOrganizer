@@ -25,23 +25,22 @@ public class UniligaTeamRestController {
     public ResponseEntity<List<UniligaTeam>> fetchUniligaTeams(){
         return ResponseEntity.ok(uniligaTeamService.findAll());
     }
-    @GetMapping(path = "/api/v1/unligaTeams/{id}")
+    @GetMapping(path = "/api/v1/uniligaTeams/{id}")
     public ResponseEntity<UniligaTeam> fetchTeamsById(@PathVariable Integer id){
         var uniligaTeam = uniligaTeamService.findById(id);
         return uniligaTeam != null? ResponseEntity.ok(uniligaTeam) : ResponseEntity.notFound().build();
     }
 
-    @GetMapping(path = "api/v1/uniligaTeams/{uni}")
+    @GetMapping(path = "api/v1/uniligaTeams/uni/{uni}")
     public ResponseEntity<List<UniligaTeam>> fetchTeamsByUni(@PathVariable String uni){
         var uniligaTeam = uniligaTeamService.findByUni(uni);
         return uniligaTeam != null ? ResponseEntity.ok(uniligaTeam) : ResponseEntity.notFound().build();
     }
 
     @PostMapping(path = "/api/v1/uniligaTeams")
-    public ResponseEntity<Void> createUniligaTeam(@RequestBody UniligaTeamManipulationRequest request) throws URISyntaxException{
+    public ResponseEntity<UniligaTeam> createUniligaTeam(@RequestBody UniligaTeamManipulationRequest request) throws URISyntaxException{
         var uniligaTeam = uniligaTeamService.create(request);
-        URI uri = new URI("/api/v1/uniligaTeams/" + uniligaTeam.getId());
-        return ResponseEntity.created(uri).build();
+        return ResponseEntity.ok(uniligaTeam);
     }
 
     @PutMapping (path = "/api/v1/uniligaTeams/{id}")

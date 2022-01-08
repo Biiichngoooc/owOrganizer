@@ -3,6 +3,7 @@ package de.htwberlin.webtech.owOrganizer.web;
 import de.htwberlin.webtech.owOrganizer.service.PlayerService;
 import de.htwberlin.webtech.owOrganizer.web.api.Player;
 import de.htwberlin.webtech.owOrganizer.web.api.PlayerManipulationRequest;
+import javassist.NotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,30 @@ public class PlayerRestController {
         this.playerService = playerService;
     }
 
+    // team binding
+    @GetMapping(path = "/api/v1/players/unbound")
+    public ResponseEntity<List<Player>> fetchUnboundPlayers() {
+        return ResponseEntity.ok(playerService.findAllUnbound());
+    }
+
+    @GetMapping(path = "/api/v1/players/bound/{teamId}")
+    public ResponseEntity<List<Player>> fetchBoundPlayers(@PathVariable Integer teamId) {
+        return ResponseEntity.ok(playerService.findAllBoundToTeam(teamId));
+    }
+
+    @PutMapping(path = "/api/v1/players/{id}/bind/{teamId}")
+    public ResponseEntity<Player> bindPlayerToTeam(@PathVariable Integer id, @PathVariable Integer teamId) throws NotFoundException {
+        var player = playerService.bindToTeam(id, teamId);
+        return player != null ? ResponseEntity.ok(player) : ResponseEntity.notFound().build();
+    }
+
+    @PutMapping(path = "/api/v1/players/{id}/unbind/{teamId}")
+    public ResponseEntity<Player> unbindPlayerToTeam(@PathVariable Integer id, @PathVariable Integer teamId) throws NotFoundException {
+        var player = playerService.unbindFromTeam(id, teamId);
+        return player != null ? ResponseEntity.ok(player) : ResponseEntity.notFound().build();
+    }
+
+    // player methods
     @GetMapping(path = "/api/v1/players")
     public ResponseEntity<List<Player>> fetchPlayers() {
         return ResponseEntity.ok(playerService.findAll());
@@ -47,7 +72,6 @@ public class PlayerRestController {
         boolean successful = playerService.deleteById(id);
         return successful ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
     }
-
 }
 
 

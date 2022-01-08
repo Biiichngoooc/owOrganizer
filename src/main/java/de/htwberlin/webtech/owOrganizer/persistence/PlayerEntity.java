@@ -28,7 +28,7 @@ public class PlayerEntity {
     private Boolean student;
     @Column(name = "is_competitive", columnDefinition = "boolean default false")
     private Boolean competitive;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "team_id", referencedColumnName = "uniliga_team_id")
     private UniligaTeamEntity uniligaTeamEntity;
     @Column(name = "bnet_mail")
