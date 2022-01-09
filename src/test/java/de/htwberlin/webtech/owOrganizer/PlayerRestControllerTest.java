@@ -136,5 +136,51 @@ public class PlayerRestControllerTest {
                 )
                 .andExpect(status().isBadRequest());
     }
+
+    @Test
+    @DisplayName("should return players who do not have a team")
+    void should_return_found_players_who_dont_have_a_team() throws Exception {
+        var players = List.of(
+                new Player(1,"jk11", "Jack#11", "Jackie#12",
+                        "male", "Jack", "Müller", Date.valueOf("1996-12-11"), true, true,
+                        "Jackie@gmail.com", "HTW Berlin", "Berlin", true, "Jackie@htw-berlin.de" ),
+                new Player(2,"marie11", "Marie#11", "Marie#12",
+                        "female", "Marie", "Meier", Date.valueOf("1997-07-01"), true, false,
+                        "Marie@gmail.com", "HTW Berlin", "Berlin", true, "Marie@htw-berlin.de" )
+        );
+        doReturn(players).when(playerService).findAllUnbound();
+
+        mockMvc.perform(get("/api/v1/players/unbound"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.size()").value(2))
+                .andExpect(jsonPath("$[0].playerName").value("jk11"))
+                .andExpect(jsonPath("$[0].bnetId").value("Jack#11"))
+                .andExpect(jsonPath("$[0].discordTag").value("Jackie#12"))
+                .andExpect(jsonPath("$[0].gender").value("male"))
+                .andExpect(jsonPath("$[0].firstName").value("Jack"))
+                .andExpect(jsonPath("$[0].lastName").value("Müller"))
+                .andExpect(jsonPath("$[0].birthday").value("11.12.1996"))
+                .andExpect(jsonPath("$[0].student").value(true))
+                .andExpect(jsonPath("$[0].competitive").value(true))
+                .andExpect(jsonPath("$[0].bnetMail").value("Jackie@gmail.com"))
+                .andExpect(jsonPath("$[0].uni").value("HTW Berlin"))
+                .andExpect(jsonPath("$[0].cityOfResidence").value("Berlin"))
+                .andExpect(jsonPath("$[0].owned").value(true))
+                .andExpect(jsonPath("$[0].uniMail").value("Jackie@htw-berlin.de"))
+                .andExpect(jsonPath("$[1].playerName").value("marie11"))
+                .andExpect(jsonPath("$[1].bnetId").value("Marie#11"))
+                .andExpect(jsonPath("$[1].discordTag").value("Marie#12"))
+                .andExpect(jsonPath("$[1].gender").value("female"))
+                .andExpect(jsonPath("$[1].firstName").value("Marie"))
+                .andExpect(jsonPath("$[1].lastName").value("Meier"))
+                .andExpect(jsonPath("$[1].birthday").value("01.07.1997"))
+                .andExpect(jsonPath("$[1].student").value(true))
+                .andExpect(jsonPath("$[1].competitive").value(false))
+                .andExpect(jsonPath("$[1].bnetMail").value("Marie@gmail.com"))
+                .andExpect(jsonPath("$[1].uni").value("HTW Berlin"))
+                .andExpect(jsonPath("$[1].cityOfResidence").value("Berlin"))
+                .andExpect(jsonPath("$[1].owned").value(true))
+                .andExpect(jsonPath("$[1].uniMail").value("Marie@htw-berlin.de"));
+    }
 }
 
