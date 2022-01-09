@@ -37,6 +37,7 @@ public class UniligaTeamService {
         var playerEntity = uniligaTeamRepository.findById(id);
         return playerEntity.map(this::transformEntity).orElse(null);
     }
+
     public List<UniligaTeam> findByUni(String uni){
         List<UniligaTeamEntity> uniligaTeam = uniligaTeamRepository.findAllByUni(uni);
         return uniligaTeam.stream().map(uniligaTeamEntity -> new UniligaTeam(

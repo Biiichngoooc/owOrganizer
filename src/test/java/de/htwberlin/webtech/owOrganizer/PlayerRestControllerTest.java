@@ -70,7 +70,7 @@ public class PlayerRestControllerTest {
                  .andExpect(jsonPath("$[1].birthday").value("01.07.1997"))
                  .andExpect(jsonPath("$[1].isStudent").value(true))
                  .andExpect(jsonPath("$[1].isCompetitive").value(false))
-                 .andExpect(jsonPath("$[1].bnetMail").value("Jackie@gmail.com"))
+                 .andExpect(jsonPath("$[1].bnetMail").value("Marie@gmail.com"))
                  .andExpect(jsonPath("$[1].uni").value("HTW Berlin"))
                  .andExpect(jsonPath("$[1].cityOfResidence").value("Berlin"))
                  .andExpect(jsonPath("$[1].owned").value(true))
