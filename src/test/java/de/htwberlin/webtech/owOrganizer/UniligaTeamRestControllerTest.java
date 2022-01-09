@@ -51,32 +51,12 @@ public class UniligaTeamRestControllerTest {
     }
 
     @Test
-    @DisplayName("should return 404 if uniliga team is not found")
-    void should_return_404_if_uniliga_team_is_not_found() throws Exception {
-        doReturn(null).when(uniligaTeamService).findByUni(anyString());
+    @DisplayName("should return 404 if team is not found")
+    void should_return_404_if_team_is_not_found() throws Exception {
+        doReturn(null).when(uniligaTeamService).findById(anyInt());
 
-        mockMvc.perform(get("/api/v1/uniligaTeams/HTW"))
+        mockMvc.perform(get("/api/v1/uniligaTeams/100"))
                 .andExpect(status().isNotFound());
     }
 
-    @Test
-    @DisplayName("should return 201 http status and Location header when creating an uniliga team")
-    void should_return_201_http_status_and_location_header_when_creatin_an_uniliga_team() throws Exception {
-        String playerToCreateAsJson ="{\"name\": \"Berlin Gummibär\",\n" +
-                "        \"uni\": \"Technische Universität Berlin}";
-
-        var uniligaTeam = new UniligaTeam(100,null,null);
-
-        doReturn(uniligaTeam).when(uniligaTeamService).create(any());
-
-        mockMvc.perform(
-                        post("/api/v1/uniligaTeams")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(playerToCreateAsJson)
-                )
-                .andExpect(status().isCreated())
-                .andExpect(header().exists("Location"))
-                .andExpect(header().string("Location", Matchers.equalTo("/api/v1/uniligaTeams/" + uniligaTeam.getId())));
-
-    }
 }
