@@ -54,8 +54,8 @@ public class PlayerRestControllerTest {
                  .andExpect(jsonPath("$[0].firstName").value("Jack"))
                  .andExpect(jsonPath("$[0].lastName").value("Müller"))
                  .andExpect(jsonPath("$[0].birthday").value("11.12.1996"))
-                 .andExpect(jsonPath("$[0].isStudent").value(true))
-                 .andExpect(jsonPath("$[0].isCompetitive").value(true))
+                 .andExpect(jsonPath("$[0].student").value(true))
+                 .andExpect(jsonPath("$[0].competitive").value(true))
                  .andExpect(jsonPath("$[0].bnetMail").value("Jackie@gmail.com"))
                  .andExpect(jsonPath("$[0].uni").value("HTW Berlin"))
                  .andExpect(jsonPath("$[0].cityOfResidence").value("Berlin"))
@@ -68,13 +68,13 @@ public class PlayerRestControllerTest {
                  .andExpect(jsonPath("$[1].firstName").value("Marie"))
                  .andExpect(jsonPath("$[1].lastName").value("Meier"))
                  .andExpect(jsonPath("$[1].birthday").value("01.07.1997"))
-                 .andExpect(jsonPath("$[1].isStudent").value(true))
-                 .andExpect(jsonPath("$[1].isCompetitive").value(false))
+                 .andExpect(jsonPath("$[1].student").value(true))
+                 .andExpect(jsonPath("$[1].competitive").value(false))
                  .andExpect(jsonPath("$[1].bnetMail").value("Marie@gmail.com"))
                  .andExpect(jsonPath("$[1].uni").value("HTW Berlin"))
                  .andExpect(jsonPath("$[1].cityOfResidence").value("Berlin"))
                  .andExpect(jsonPath("$[1].owned").value(true))
-                 .andExpect(jsonPath("$[0].uniMail").value("Marie@htw-berlin.de"));
+                 .andExpect(jsonPath("$[1].uniMail").value("Marie@htw-berlin.de"));
      }
 
 
