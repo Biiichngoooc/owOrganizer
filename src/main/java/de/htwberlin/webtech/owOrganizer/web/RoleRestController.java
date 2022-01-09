@@ -34,7 +34,10 @@ public class RoleRestController {
     public ResponseEntity<Void> createRole(@RequestBody RoleManipulationRequest request) throws URISyntaxException {
         var role = roleService.create(request);
         URI uri = new URI("api/v1/roles/" + role.getRoleId());
-        return ResponseEntity.created(uri).build();
+        return ResponseEntity
+                .created(uri)
+                .header("Access-Controller-Expose-Headers", "Location")
+                .build();
     }
 
     @PutMapping(path = "/api/v1/roles/{roleId}")

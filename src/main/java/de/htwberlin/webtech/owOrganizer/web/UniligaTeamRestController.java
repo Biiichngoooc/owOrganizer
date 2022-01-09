@@ -40,7 +40,11 @@ public class UniligaTeamRestController {
     @PostMapping(path = "/api/v1/uniligaTeams")
     public ResponseEntity<UniligaTeam> createUniligaTeam(@RequestBody UniligaTeamManipulationRequest request) throws URISyntaxException{
         var uniligaTeam = uniligaTeamService.create(request);
-        return ResponseEntity.ok(uniligaTeam);
+        URI uri = new URI("/api/v1/uniligaTeams/" + uniligaTeam.getId());
+        return ResponseEntity
+                .created(uri)
+                .header("Access-Controller-Expose-Headers", "Location")
+                .build();
     }
 
     @PutMapping (path = "/api/v1/uniligaTeams/{id}")

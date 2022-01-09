@@ -3,7 +3,6 @@ package de.htwberlin.webtech.owOrganizer;
 import de.htwberlin.webtech.owOrganizer.service.PlayerService;
 import de.htwberlin.webtech.owOrganizer.web.PlayerRestController;
 import de.htwberlin.webtech.owOrganizer.web.api.Player;
-import de.htwberlin.webtech.owOrganizer.web.api.PlayerManipulationRequest;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -37,10 +36,10 @@ public class PlayerRestControllerTest {
     void should_return_found_players_from_player_service() throws Exception {
          var players = List.of(
                  new Player(1,"jk11", "Jack#11", "Jackie#12",
-                         "male", "Jack", "Müller", Date.valueOf("1996-16-12"), true, true,
+                         "male", "Jack", "Müller", Date.valueOf("1996-12-11"), true, true,
                          "Jackie@gmail.com", "HTW Berlin", "Berlin", true, "Jackie@htw-berlin.de" ),
                 new Player(2,"marie11", "Marie#11", "Marie#12",
-                        "female", "Marie", "Meier", Date.valueOf("1997-11-01"), true, false,
+                        "female", "Marie", "Meier", Date.valueOf("1997-07-01"), true, false,
                         "Marie@gmail.com", "HTW Berlin", "Berlin", true, "Marie@htw-berlin.de" )
          );
          doReturn(players).when(playerService).findAll();
@@ -54,7 +53,7 @@ public class PlayerRestControllerTest {
                  .andExpect(jsonPath("$[0].gender").value("male"))
                  .andExpect(jsonPath("$[0].firstName").value("Jack"))
                  .andExpect(jsonPath("$[0].lastName").value("Müller"))
-                 .andExpect(jsonPath("$[0].birthday").value("1996-16-12"))
+                 .andExpect(jsonPath("$[0].birthday").value("11.12.1996"))
                  .andExpect(jsonPath("$[0].isStudent").value(true))
                  .andExpect(jsonPath("$[0].isCompetitive").value(true))
                  .andExpect(jsonPath("$[0].bnetMail").value("Jackie@gmail.com"))
@@ -68,7 +67,7 @@ public class PlayerRestControllerTest {
                  .andExpect(jsonPath("$[1].gender").value("female"))
                  .andExpect(jsonPath("$[1].firstName").value("Marie"))
                  .andExpect(jsonPath("$[1].lastName").value("Meier"))
-                 .andExpect(jsonPath("$[1].birthday").value("1997-11-01"))
+                 .andExpect(jsonPath("$[1].birthday").value("01-07-1997"))
                  .andExpect(jsonPath("$[1].isStudent").value(true))
                  .andExpect(jsonPath("$[1].isCompetitive").value(false))
                  .andExpect(jsonPath("$[1].bnetMail").value("Jackie@gmail.com"))
@@ -77,6 +76,7 @@ public class PlayerRestControllerTest {
                  .andExpect(jsonPath("$[1].owned").value(true))
                  .andExpect(jsonPath("$[0].uniMail").value("Marie@htw-berlin.de"));
      }
+
 
     @Test
     @DisplayName("should return 404 if player is not found")
@@ -90,7 +90,7 @@ public class PlayerRestControllerTest {
     @Test
     @DisplayName("should return 201 http status and Location header when creating a player")
     void should_return_201_http_status_and_location_header_when_creatin_a_player() throws Exception {
-        String playerToCreateAsJson ="{\"playerName\": \"Rose99\",\n" +
+        String playerToCreateAsJson ="{\"playerName\": \"Rosie\",\n" +
                 "    \"bnetId\": \"Rose99#2219\",\n" +
                 "    \"discordTag\": \"Rosie#1241\",\n" +
                 "    \"gender\": \"f\",\n" +
@@ -136,6 +136,5 @@ public class PlayerRestControllerTest {
                 )
                 .andExpect(status().isBadRequest());
     }
-
 }
 
